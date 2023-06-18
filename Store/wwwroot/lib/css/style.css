@@ -1,0 +1,75 @@
+﻿    .cardZoom{
+        overflow:hidden;
+        position:relative;
+    }
+    .cardZoom > img {
+        position: absolute;
+        z-index: -1;
+        inset: 0;
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+        transition: transform 200ms;
+    }
+    .cardZoom:hover {
+        transform: scale(1.05);
+    }
+* {
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.image-box {
+    position: relative;
+    margin: auto;
+    overflow: hidden;
+    width: 540px;
+}
+
+    .image-box img {
+        max-width: 100%;
+        transition: all 0.3s;
+        display: block;
+        width: 100%;
+        height: auto;
+        transform: scale(1);
+    }
+
+    .image-box:hover img {
+        transform: scale(1.1);
+    }
+.frame {
+    height: 200px;
+    width: 200px;
+    overflow: hidden;
+}
+
+.zoomout img {
+    height: 300px;
+    width: 200px;
+    -webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    -ms-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+}
+
+    .zoomout img:hover {
+        width: 200px;
+        height: 200px;
+    }
+.zoomin img {
+    height: 200px;
+    width: 200px;
+    -webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    -ms-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+}
+
+    .zoomin img:hover {
+        width: 300px;
+        height: 300px;
+    }

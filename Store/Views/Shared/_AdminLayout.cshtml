@@ -1,0 +1,52 @@
+﻿<!DOCTUPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width-device-width"/>
+        <link rel="stylesheet"
+          asp-href-include="/lib/twitter-bootstrap/css/bootstrap.min.css"
+          asp-href-exclude="**/*-reboot*,**/*-grid*"/>
+        <link rel="stylesheet" asp-href-include="~/lib/fontawesome/css/all.css"/>
+        <title>@ViewData["Title"]</title>
+        <style>
+            .input-validation-error{ border-color: red;background-color:#fee;}
+                .file-upload input[type='file'] {
+  display: none;
+    }
+    [hidden] {
+  display: none !important;
+}
+  .rounded-lg {
+  border-radius: 1rem;
+}
+
+.custom-file-label.rounded-pill {
+  border-radius: 50rem;
+}
+
+.custom-file-label.rounded-pill::after {
+  border-radius: 0 50rem 50rem 0;
+}
+
+        </style>
+        <script src="/lib/jquery/jquery.min.js"></script>
+        <script src="/lib/jquery-validate/jquery.validate.min.js"></script>
+         <script src="/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+        <script>inputNode.value = fileInput.value.replace("C:\\fakepath\\", "");</script>
+    </head>
+    <body class="m-1 p-1">
+        <div class="bg-info p-2 row">
+            <div class="col">
+                <h4>@ViewData["Title"]</h4>
+            </div>
+            <div class="col-2">
+            <a class="btn btn-sm btn-primary"
+                asp-action="Logout" asp-controller="Account">Log Out</a>
+            </div>
+        </div>
+        @if (TempData["message"] != null)
+        {
+            <div class="alert alert-success">@TempData["message"]</div>
+        }
+        @RenderBody()
+    </body>
+</html>

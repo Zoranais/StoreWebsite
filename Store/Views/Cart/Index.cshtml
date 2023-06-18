@@ -1,0 +1,52 @@
+﻿@using TestStore.Infrastructure
+@using TestStore.Models.ViewModels
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@model CartIndexViewModel
+<h2>Your Cart</h2>
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>Quantity</th>
+            <th>Item</th>
+            <th class"text-right">Price</th>
+            <th class"text-right">Subtotal</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var line in Model.Cart.GatCartLines)
+        {
+            <tr>
+                <td class="text-center">@line.Quantity</td>
+                <td class="text-left">@line.Product.ProductName</td>
+                <td class="text-right">@line.Product.Price.ToString("c")</td>
+                <td class="text-right">@line.GetLinePrice().ToString("c")</td>
+                <td>
+                    <form asp-action="RemoveFromCart" method="post">
+                        <input type="hidden" name="ProductId"
+                            value="@line.Product.ProductId"/>
+                        <input type="hidden" name="returnUrl"
+                            value="@Model.ReturnUrl"/>
+                        <button type="submit" class="btn btn-sm btn-danger">
+                            X
+                        </button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+    <tfoot>
+        <tr>
+            <td colspan="3" class="text-right">Total:</td>
+            <td class="text-right">@Model.Cart.GetTotalPrice().ToString("c")</td>
+        </tr>
+    </tfoot>
+</table>
+<div class="text-center">
+    <a href="@Model.ReturnUrl" class="btn btn-outline-primary" >Return to shopping</a>
+    <a class="btn btn-outline-primary" asp-action="Checkout"
+        asp-controller="Order">
+            Checkout
+    </a>
+</div>
